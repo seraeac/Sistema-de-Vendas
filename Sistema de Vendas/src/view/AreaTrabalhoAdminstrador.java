@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-import   view.FormularioProdutos;
+import  view.FormularioProdutos;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -178,6 +178,11 @@ public class AreaTrabalhoAdminstrador extends javax.swing.JFrame {
         jMenu5.add(jMenuItem7);
 
         jMenuItem8.setText("Histórico de Vendas");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem8);
 
         jMenuBar1.add(jMenu5);
@@ -199,6 +204,11 @@ public class AreaTrabalhoAdminstrador extends javax.swing.JFrame {
         jMenu7.setText("Sair");
 
         jMenuItem10.setText("Sair do Sistema");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem10);
 
         jMenuBar1.add(jMenu7);
@@ -230,16 +240,22 @@ private void configurarVisibilidadeBotoes(String nivelAcesso) {
             // Se for usuário comum, esconde os botões de edição e exclusão
           
            jMenu2.setVisible(false);
+           jMenu3.setVisible(false);
            jMenuItem4.setVisible(false);
         }
     }
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FormularioCliente fc = new FormularioCliente();
+        FormularioCliente fc = new FormularioCliente(nivelAcesso);
         fc.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
+        // Fechar a janela atual
+        this.dispose(); 
+
+        // Criar e mostrar a tela de login
+        FormularioLogin login = new FormularioLogin(); // Altere para o nome da sua classe de login
+        login.setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -278,6 +294,15 @@ private void configurarVisibilidadeBotoes(String nivelAcesso) {
         fv.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        FormularioHistorico fh = new FormularioHistorico(nivelAcesso);
+        fh.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,7 +336,8 @@ private void configurarVisibilidadeBotoes(String nivelAcesso) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 new AreaTrabalhoAdminstrador("Adminstrador").setVisible(true);
+                 //new AreaTrabalhoAdminstrador("Adminstrador").setVisible(true);
+                new FormularioLogin().setVisible(true);
             }
         });
     }

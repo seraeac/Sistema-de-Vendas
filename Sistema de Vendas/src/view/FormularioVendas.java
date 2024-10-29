@@ -596,6 +596,7 @@ private void configurarVisibilidadeBotoes(String nivelAcesso) {
         
          // Obtém o funcionário logado da sessão
     Funcionarios funcionarioLogado = SessaoUsuario.getFuncionarioLogado();
+    txtFuncionarioId.setText(String.valueOf(funcionarioLogado.getId()));
     /*
     
     if (funcionarioLogado != null) {
